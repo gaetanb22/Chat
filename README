@@ -1,0 +1,7 @@
+execute the following step in a linux terminal:
+/chat$ rethinkdb
+/chat/server$ npm install
+/chat/server$ npm run start
+/chat/client$ npm install
+/chat/client$ npm run start
+run project at the address given by the client.
