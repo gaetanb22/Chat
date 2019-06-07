@@ -1,24 +1,16 @@
 class clientServerCommunication {
 	constructor(url) {
-    this.login = false;
+    this.login = "";
     this.url = url;
     this.ws = new WebSocket(this.url);
-    console.log('constructor')
-    this.ws.onopen = () => {
-      console.log('onopen')
-    }
-
     this.ws.onmessage = evt => {
-      console.log('onmessage')
       const data = JSON.parse(evt.data)
       this.receiveData(data);
     }
 
     this.ws.onclose = () => {
-      console.log('onclose')
       this.ws = new WebSocket(this.url);
     }
-
     }
     sendData(data)
     {
@@ -26,10 +18,25 @@ class clientServerCommunication {
     }
     receiveData(data)
     {
-    	if (data.cmd == "message")
+      //console.log("receive")
+      if (data.cmd == "user")
+      {
+        this.handleNewUser(data.option)
+      }
+    	if (data.cmd == "messageToUser")
     	{
     		this.handleMessage(data.option)
     	}
+      if (data.cmd == "create")
+      {
+        this.login = data.option.username
+        this.handleCreate(data.option)
+      }
+      if (data.cmd == "connect")
+      {
+        this.login = data.option.username
+        this.handleCreate(data.option)
+      }
     }
 }
 

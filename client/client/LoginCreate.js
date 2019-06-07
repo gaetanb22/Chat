@@ -21,6 +21,7 @@ export default class LoginCreate extends React.Component {
 
   handleClose = () => 
   {
+    this.setState({username: "", password: ""});
     this.setState({ open: false });
   };
 

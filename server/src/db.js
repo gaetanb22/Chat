@@ -3,15 +3,13 @@ var rethinkdb = require('rethinkdb');
 var async = require('async');
 
 class db {
-  constructor(database = "", table = "")
+  constructor(database)
   {
     this.database = database;
-    this.table = table;
   }
-  setupDb() {
+  setupDb(table) {
     var self = this;
     var database = this.database;
-    var table = this.table;
     async.waterfall([
       function(callback) {
         self.connectToRethinkDbServer(function(err,connection) {

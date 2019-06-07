@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
-import Button from '@material-ui/core/Button';
+import Avatar from '@material-ui/core/Avatar';
 
-import LoginConnect from './LoginConnect'
-import LoginCreate from './LoginCreate'
-
-class Login extends Component {
+class Login extends Component
+{
   constructor(props)
   {
-    super(props);
+  	super(props);
+  	this.state = {
+      username : props.username
+    }
   }
-  render ()
+  render()
   {
   	return (
-  		<div>
-        <LoginConnect/>
-        <LoginCreate/>
-  		</div>
-  		);
+      <div>
+      <Avatar>{this.state.username.substring(0, 2)}</Avatar>
+      {this.state.username}
+      </div>
+      )
   }
 }
 
